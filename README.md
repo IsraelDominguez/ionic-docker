@@ -1,8 +1,26 @@
-docker-compose run ionic ionic init
-
-docker-compose run ionic ionic cordova platform add android
 
 
- npm i -g install cordova-res
-       
- ionic cordova resources android --force
+##### Iniciar Project Ionic
+`docker-compose run ionic ionic init`
+
+##### Up Ionic Server
+`docker-compose up -d`
+
+##### Generar Archivo apk para Android
+`ionic cordova platform add android`
+
+en nuestro Docker
+
+`dc ionic cordova platform add android`
+
+##### Generar Archivo apk para IOS (mandatory in mac)
+`dc ionic cordova platform add ios`
+
+
+##### Generar Resources (iconos app,...)
+`dc ionic cordova resources`
+
+`dc ionic cordova resources android --force`
+
+
+

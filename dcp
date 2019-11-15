@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+COMPOSE="docker-compose"
+
+if [ $# -gt 0 ]; then
+    if [ "$1" == "run" ]; then
+        shift 1
+        $COMPOSE run ionic $@
+    elif [ "$1" == "ionic" ]; then
+        shift 1
+        $COMPOSE ionic ionic $@
+    elif [ "$1" == "yarn" ]; then
+        shift 1
+        $COMPOSE run --rm -w /var/www node yarn $@
+    elif [ "$1" == "npm" ]; then
+        shift 1
+        $COMPOSE run --rm -w /var/www node npm $@
+    else
+        $COMPOSE $@
+    fi
+else
+    $COMPOSE ps
+fi

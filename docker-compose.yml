@@ -10,7 +10,7 @@ services:
     - "0.0.0.0:9876:9876" # karma
     - "0.0.0.0:35729:35729" # livereload
     volumes:
-    - "./photo-gallery:/app:rw" # mapping to local ionic project directory
+    - "./01-myApp:/app:rw" # mapping to local ionic project directory
     #- "/dev/bus/usb:/dev/bus/usb" # usb to build to device | ATTENTION: only enable this on non-osx systems
 networks:
   default:
