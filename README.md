@@ -23,4 +23,9 @@ en nuestro Docker
 `dc ionic cordova resources android --force`
 
 
+##### Arrancar con Ionic Lab (ver en la misma pantalla android e ios)
+`ionic serve --lab`
 
+
+##### Arrancar servidor Angular
+`dc ng serve -o`

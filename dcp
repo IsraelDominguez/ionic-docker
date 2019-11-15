@@ -15,6 +15,8 @@ if [ $# -gt 0 ]; then
     elif [ "$1" == "npm" ]; then
         shift 1
         $COMPOSE run --rm -w /var/www node npm $@
+    elif [ "$1" == "ng" ]; then
+        $COMPOSE run ionic $@
     else
         $COMPOSE $@
     fi

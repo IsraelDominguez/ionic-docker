@@ -1,7 +1,7 @@
 version: '3'
 services:
   ionic:
-    build: .
+    build: ./docker/ionic
     ports:
     - "0.0.0.0:3000:3000" # ng dev server
     - "0.0.0.0:5000:5000" # node
@@ -12,6 +12,14 @@ services:
     volumes:
     - "./01-myApp:/app:rw" # mapping to local ionic project directory
     #- "/dev/bus/usb:/dev/bus/usb" # usb to build to device | ATTENTION: only enable this on non-osx systems
+  angular:
+    build: ./docker/angular
+    ports:
+      - 4200:4200
+    volumes:
+      - "./02-angularbases:/app:rw"
+    command: >
+      bash -c "ng serve --host 0.0.0.0 --port 4200"
 networks:
   default:
     external:
