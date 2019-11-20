@@ -15,4 +15,5 @@ En nuestro docker
 
 <router-outlet></router-outlet>`
 
-
+##### Genera archivo de rutas en el modulo
+`dc angular ng g m pages/posts --routing`
