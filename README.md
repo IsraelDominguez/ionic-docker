@@ -16,7 +16,6 @@ en nuestro Docker
 ##### Generar Archivo apk para IOS (mandatory in mac)
 `dc ionic cordova platform add ios`
 
-
 ##### Generar Resources (iconos app,...)
 `dc ionic cordova resources`
 
