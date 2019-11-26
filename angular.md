@@ -15,5 +15,14 @@ En nuestro docker
 
 <router-outlet></router-outlet>`
 
-##### Genera archivo de rutas en el modulo
+##### Genera archivo de rutas en el modulo con archivo de routes
 `dc angular ng g m pages/posts --routing`
+
+##### Lazy Load
+ loadChildren: './pages/posts/posts.module#PostsModule'
+ 
+##### Data Service - sin test
+`ng g s service/data --spec=false`
+
+Pipe Async `| async` to better ajax call performance
+RXjs manejo de Observables
