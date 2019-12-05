@@ -13,7 +13,7 @@ const routes: Routes = [
   },
   {
     path: 'sheet',
-    loadChildren: () => import('./pages/sheet/sheet.module').then( m => m.SheetPageModule)
+    loadChildren: () => import('./pages/action-sheet/sheet.module').then( m => m.SheetPageModule)
   },
   // { path: 'home', loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)},
   {
