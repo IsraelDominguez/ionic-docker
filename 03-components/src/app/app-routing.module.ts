@@ -15,11 +15,16 @@ const routes: Routes = [
     path: 'sheet',
     loadChildren: () => import('./pages/action-sheet/sheet.module').then( m => m.SheetPageModule)
   },
-  // { path: 'home', loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)},
   {
-    path: '**',
-    redirectTo: 'home'
-  }
+    path: 'avatar',
+    loadChildren: () => import('./pages/avatar/avatar.module').then( m => m.AvatarPageModule)
+  },
+  // { path: 'home', loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)},
+  // {
+  //   path: '**',
+  //   redirectTo: 'home'
+  // },
+
 ];
 
 @NgModule({
