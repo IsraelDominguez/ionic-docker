@@ -3,6 +3,8 @@
 ##### Create New 
 `ionic g page path` 
 
+ionic g page pages/cards --spec=false
+
 --dry-run : Review before execute
 
 En nuestro docker
@@ -18,3 +20,6 @@ ionic g components components/name-component
 para posicionar al inicio slot="start"
 
 
+##### Mode
+Todo componente se puede forzar para que se vea de un modo ios o android
+ mode="ios|android"
