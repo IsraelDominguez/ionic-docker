@@ -28,9 +28,20 @@ export class Tab2Page implements OnInit{
     this.loadNews()
   }
 
-  loadNews() {
+  loadNews(event?) {
     this.noticiasService.getTopHeadlinesByCategory(this.segment.value).subscribe(resp => {
+      console.log('noticias', resp);
+      if (resp.articles.length === 0 && event) {
+        event.target.disabled = true;
+        event.target.complete();
+        return;
+      }
+
       this.noticias.push(...resp.articles);
+
+      if (event) {
+        event.target.complete();
+      }
     });
   }
 }
