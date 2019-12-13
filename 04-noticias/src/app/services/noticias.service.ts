@@ -15,16 +15,19 @@ const headers = new HttpHeaders({
 })
 export class NoticiasService {
 
+  pageNumber = 0;
+
   constructor(private http: HttpClient) {}
 
   private performQuery( query: string ){
     query = endpoint + query;
-    console.log(query);
+    //console.log(query);
     return this.http.get<NewsApiResponse>(query, { headers });
   }
 
   getTopHeadlines() {
-    return this.performQuery('/top-headlines?country=us');
+    this.pageNumber++;
+    return this.performQuery(`/top-headlines?country=us&page=${this.pageNumber}`);
   }
 
   getTopHeadlinesByCategory(category: string) {
