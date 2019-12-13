@@ -21,5 +21,5 @@ para posicionar al inicio slot="start"
 
 
 ##### Mode
-Todo componente se puede forzar para que se vea de un modo ios o android
- mode="ios|android"
+Todo componente se puede forzar para que se vea de un modo ios o material design y así se ve igual en ambos dispositvos
+ mode="ios|md"
