@@ -32,6 +32,9 @@ Todo componente se puede forzar para que se vea de un modo ios o material design
 
     `import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';`
     
+    `dc run ionic cordova plugin add cordova-plugin-x-socialsharing`
+    `dc run npm install @ionic-native/social-sharing`
+   
     Añadir en los providers el plugin: InAppBrowser
 
     Usarlo en nuestros modulos o componentes

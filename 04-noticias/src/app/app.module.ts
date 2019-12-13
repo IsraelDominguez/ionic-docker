@@ -13,6 +13,7 @@ import { AppComponent } from './app.component';
 
 // plugin nativo
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+import { SocialSharing } from "@ionic-native/social-sharing/ngx";
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
     StatusBar,
     SplashScreen,
       InAppBrowser,
+      SocialSharing,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
