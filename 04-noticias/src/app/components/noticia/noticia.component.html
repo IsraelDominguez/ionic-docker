@@ -3,11 +3,18 @@
     <ion-card-subtitle>
       <span class="text-primary">{{index+1}}. </span>
       <span class="noticia-source-name">{{noticia.source.name}}</span>
+
+      <div class="noticia-more">
+        <ion-button fill="clear" (click)="showMenu()">
+          <ion-icon slot="icon-only" name="more"></ion-icon>
+        </ion-button>
+      </div>
+
     </ion-card-subtitle>
-    <ion-card-title>{{noticia.title}}</ion-card-title>
+    <ion-card-title (click)="openNews()">{{noticia.title}}</ion-card-title>
   </ion-card-header>
   <ion-img *ngIf="noticia.urlToImage"
-           [src]="noticia.urlToImage"></ion-img>
+           [src]="noticia.urlToImage" (click)="openNews()"></ion-img>
 
   <ion-card-content>{{noticia.content}}</ion-card-content>
 </ion-card>

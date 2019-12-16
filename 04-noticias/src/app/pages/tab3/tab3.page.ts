@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {NoticiasRepositoryService} from "../../services/noticias-repository.service";
+import {Article} from "../../interfaces/Article";
 
 @Component({
   selector: 'app-tab3',
@@ -7,6 +9,12 @@ import { Component } from '@angular/core';
 })
 export class Tab3Page {
 
-  constructor() {}
+
+  sliderOpts = {
+    allowSlidePref: false,
+    allowSlideNext: false
+  };
+
+  constructor(public noticiasRepository: NoticiasRepositoryService) {}
 
 }
