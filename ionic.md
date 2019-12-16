@@ -25,6 +25,7 @@ Todo componente se puede forzar para que se vea de un modo ios o material design
  mode="ios|md"
  
 ##### Declarar Plugin Nativo
+
 1. Instalar
  `npm i @ionic-native/in-app-browser`
  
@@ -35,6 +36,17 @@ Todo componente se puede forzar para que se vea de un modo ios o material design
     `dc run ionic cordova plugin add cordova-plugin-x-socialsharing`
     `dc run npm install @ionic-native/social-sharing`
    
-    Añadir en los providers el plugin: InAppBrowser
+    Los plugins se añaden a los providers en app.module.ts: InAppBrowser
 
     Usarlo en nuestros modulos o componentes
+    
+##### Storage
+
+`dc run ionic cordova plugin add cordova-sqlite-storage`
+
+`dc npm install --save @ionic/storage`
+
+Es un modulo, los módulos se apader a los imports en app.module.ts
+
+
+    

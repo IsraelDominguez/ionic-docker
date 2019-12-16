@@ -4,6 +4,7 @@ import {Article} from "../../interfaces/Article";
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import {ActionSheetController} from "@ionic/angular";
 import {SocialSharing} from "@ionic-native/social-sharing/ngx";
+import {NoticiasRepositoryService} from "../../services/noticias-repository.service";
 
 
 @Component({
@@ -18,7 +19,8 @@ export class NoticiaComponent implements OnInit {
 
   constructor(private iab: InAppBrowser,
               private actionSheetCrl: ActionSheetController,
-              private socialSharing: SocialSharing
+              private socialSharing: SocialSharing,
+              private noticiaRepository: NoticiasRepositoryService
   ) { }
 
   ngOnInit() {}
@@ -48,7 +50,7 @@ export class NoticiaComponent implements OnInit {
           icon: 'star',
           cssClass: 'action-dark',
           handler: () => {
-            console.log('Favorite clicked');
+            this.noticiaRepository.save(this.noticia);
           }
         }, {
           text: 'Cancelar',

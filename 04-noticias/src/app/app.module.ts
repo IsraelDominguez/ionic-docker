@@ -15,11 +15,19 @@ import { AppComponent } from './app.component';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { SocialSharing } from "@ionic-native/social-sharing/ngx";
 
+// Module Storage
+import { IonicStorageModule } from '@ionic/storage';
+
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,
+    HttpClientModule,
+    IonicStorageModule.forRoot({
+      name: '__mibbdd'
+    })
+  ],
   providers: [
     StatusBar,
     SplashScreen,
