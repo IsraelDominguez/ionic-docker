@@ -5,6 +5,7 @@ import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import {ActionSheetController} from "@ionic/angular";
 import {SocialSharing} from "@ionic-native/social-sharing/ngx";
 import {NoticiasRepositoryService} from "../../services/noticias-repository.service";
+import { ToastController } from '@ionic/angular';
 
 
 @Component({
@@ -12,7 +13,7 @@ import {NoticiasRepositoryService} from "../../services/noticias-repository.serv
   templateUrl: './noticia.component.html',
   styleUrls: ['./noticia.component.scss'],
 })
-export class NoticiaComponent implements OnInit {
+export class NoticiaComponent {
 
   @Input() noticia: Article;
   @Input() index: number;
@@ -21,11 +22,17 @@ export class NoticiaComponent implements OnInit {
   constructor(private iab: InAppBrowser,
               private actionSheetCrl: ActionSheetController,
               private socialSharing: SocialSharing,
-              private noticiaRepository: NoticiasRepositoryService
+              private noticiaRepository: NoticiasRepositoryService,
+              public toastCtrl: ToastController
   ) { }
 
-  ngOnInit() {
-    //console.log(this.favs);
+
+  async presentToast(message: string) {
+    const toast = await this.toastCtrl.create({
+      message: message,
+      duration: 2000
+    });
+    toast.present();
   }
 
   openNews() {
@@ -42,8 +49,9 @@ export class NoticiaComponent implements OnInit {
             icon: 'star',
             cssClass: 'action-dark',
             handler: () => {
-          this.noticiaRepository.save(this.noticia);
-        }
+              this.noticiaRepository.save(this.noticia);
+              this.presentToast('Save to Favs');
+          }
       }
     } else {
       favsButton = {
@@ -52,6 +60,7 @@ export class NoticiaComponent implements OnInit {
         cssClass: 'action-dark',
         handler: () => {
           this.noticiaRepository.delete(this.noticia);
+          this.presentToast('Delete from Favs');
         }
       }
     }
