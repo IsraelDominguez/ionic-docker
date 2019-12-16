@@ -26,7 +26,10 @@ export class NoticiasRepositoryService {
   async getFavorites() {
      // Con Await hacemos que se espere a que se carge, así en save nos aseguramos que están cargadas
      const favs = await this.storage.get('favs');
-     this.noticias = favs;
+
+     if (favs) {
+       this.noticias = favs;
+     }
   }
 
 }

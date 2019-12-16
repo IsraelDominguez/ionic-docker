@@ -9,7 +9,11 @@ import {Article} from "../../interfaces/Article";
 })
 export class Tab3Page {
 
-  noticiasFavoritas: Article[] = [];
+
+  sliderOpts = {
+    allowSlidePref: false,
+    allowSlideNext: false
+  };
 
   constructor(public noticiasRepository: NoticiasRepositoryService) {}
 
