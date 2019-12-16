@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Storage} from "@ionic/storage";
 import {Article} from "../interfaces/Article";
+import {createConsoleLogger} from "@angular-devkit/core/node";
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class NoticiasRepositoryService {
   noticias: Article[] = [];
 
   constructor(private storage: Storage) {
-
+    this.getFavorites();
   }
 
   save(noticia: Article) {
@@ -22,9 +23,10 @@ export class NoticiasRepositoryService {
     }
   }
 
-  getFavorites() {
-
-     return this.noticias;
+  async getFavorites() {
+     // Con Await hacemos que se espere a que se carge, así en save nos aseguramos que están cargadas
+     const favs = await this.storage.get('favs');
+     this.noticias = favs;
   }
 
 }
