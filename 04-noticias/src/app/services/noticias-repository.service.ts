@@ -32,4 +32,9 @@ export class NoticiasRepositoryService {
      }
   }
 
+  delete(noticia: Article) {
+    this.noticias = this.noticias.filter(not => not.title != noticia.title);
+    this.storage.set('favs', this.noticias);
+  }
+
 }

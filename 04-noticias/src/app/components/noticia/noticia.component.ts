@@ -16,6 +16,7 @@ export class NoticiaComponent implements OnInit {
 
   @Input() noticia: Article;
   @Input() index: number;
+  @Input() favs;
 
   constructor(private iab: InAppBrowser,
               private actionSheetCrl: ActionSheetController,
@@ -23,13 +24,38 @@ export class NoticiaComponent implements OnInit {
               private noticiaRepository: NoticiasRepositoryService
   ) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    //console.log(this.favs);
+  }
 
   openNews() {
     const browser = this.iab.create(this.noticia.url, '_system');
   }
 
   async showMenu() {
+
+    let favsButton;
+
+    if (this.favs) {
+      favsButton = {
+        text: 'Favorito',
+            icon: 'star',
+            cssClass: 'action-dark',
+            handler: () => {
+          this.noticiaRepository.save(this.noticia);
+        }
+      }
+    } else {
+      favsButton = {
+        text: 'Quitar Favorito',
+        icon: 'trash',
+        cssClass: 'action-dark',
+        handler: () => {
+          this.noticiaRepository.delete(this.noticia);
+        }
+      }
+    }
+
     const actionSheet = await this.actionSheetCrl.create({
       buttons: [
         {
@@ -45,14 +71,8 @@ export class NoticiaComponent implements OnInit {
                 this.noticia.url
             );
           }
-        }, {
-          text: 'Favorito',
-          icon: 'star',
-          cssClass: 'action-dark',
-          handler: () => {
-            this.noticiaRepository.save(this.noticia);
-          }
-        }, {
+        }, favsButton,
+        {
           text: 'Cancelar',
           icon: 'close',
           role: 'cancel',
