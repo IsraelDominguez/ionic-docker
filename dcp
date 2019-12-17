@@ -15,6 +15,18 @@ if [ $# -gt 0 ]; then
     elif [ "$1" == "npm" ]; then
         shift 1
         $COMPOSE exec ionic npm $@
+    elif [ "$1" == "nodenpm" ]; then
+        shift 1
+        $COMPOSE run --rm -w /app node npm $@
+    elif [ "$1" == "node" ]; then
+        shift 1
+        $COMPOSE run --rm -w /app node node $@
+    elif [ "$1" == "nodemon" ]; then
+        shift 1
+        $COMPOSE run --rm -w /app node nodemon $@
+    elif [ "$1" == "tsc" ]; then
+        shift 1
+        $COMPOSE run --rm -w /app node tsc $@
     elif [ "$1" == "ng" ]; then
         $COMPOSE run ionic $@
     elif [ "$1" == "angular" ]; then

@@ -22,6 +22,17 @@ services:
       - "./02-angularbases:/app:rw"
     command: >
       bash -c "ng serve --host 0.0.0.0 --port 4200"
+  node:
+      build: ./docker/node
+      working_dir: /app
+      environment:
+        - NODE_ENV=development
+      volumes:
+        - ./08-fotosgram-server:/app
+      ports:
+        - "3000:3000"
+      expose:
+        - "8081"
   mongo:
     image: mongo
     environment:
@@ -37,7 +48,7 @@ services:
   mongo-express:
       image: mongo-express
       ports:
-        - 8081:8081
+        - 8082:8081
       environment:
         ME_CONFIG_MONGODB_ADMINUSERNAME: ionic
         ME_CONFIG_MONGODB_ADMINPASSWORD: ionic
