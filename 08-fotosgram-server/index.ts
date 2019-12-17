@@ -1,4 +1,12 @@
-console.log("Hello");
+import Server from './classes/server';
+import userRoutes from "./routes/users";
 
-console.log("Isra!!!!!");
+const server = new Server();
 
+// App Routes
+server.app.use('/user', userRoutes);
+
+// Up Express Server
+server.start( () => {
+    console.log(`Server running on ${server.port} `);
+});
