@@ -25,14 +25,16 @@ services:
   node:
       build: ./docker/node
       working_dir: /app
+      links:
+        - mongo
       environment:
         - NODE_ENV=development
       volumes:
         - ./08-fotosgram-server:/app
       ports:
-        - "3000:3000"
+        - 3000:3000
       expose:
-        - "3000"
+        - 3000
   mongo:
     image: mongo
     environment:
